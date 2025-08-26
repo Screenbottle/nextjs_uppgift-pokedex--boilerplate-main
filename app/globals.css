@@ -3,6 +3,28 @@
 :root {
   --background: #ffffff;
   --foreground: #030303;
+  
+  /* Pokemon Types */
+  --normal: #9fa19f;
+  --fire: #e62829;
+  --fighting: #ff8000;
+  --water: #2980ef;
+  --flying: #81b9ef;
+  --grass: #3fa129;
+  --poison: #9141cb;
+  --electric: #fac000;
+  --ground: #915121;
+  --psychic: #ef4179;
+  --rock: #afa981;
+  --ice: #3dcef3;
+  --bug: #91a119;
+  --dragon: #5060e1;
+  --ghost: #704170;
+  --dark: #624d4e;
+  --steel: #60a1b8;
+  --fairy: #ef70ef;
+  --stellar: #40b5a5;
+  --unknown: #689f8f;
 }
 
 @theme inline {
@@ -88,3 +110,4 @@ h1, h2, h3 {
   display: grid;
   grid-template-columns: inherit;
 }
+
