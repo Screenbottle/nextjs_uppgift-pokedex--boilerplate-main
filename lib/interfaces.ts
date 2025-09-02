@@ -10,4 +10,15 @@ export interface Pokemon {
   };
 }
 
+export interface PokemonShort {
+  name: string;
+  url: string;
+}
+
+export interface PokemonType {
+  id: number;
+  name: string;
+  pokemon: PokemonShort[];
+}
+
 

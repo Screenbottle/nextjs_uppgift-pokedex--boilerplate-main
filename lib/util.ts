@@ -3,7 +3,7 @@ export function test() {
 }
 
 export function randomPokemonId() :number {
-  return Math.floor(Math.random() * 1301) + 1; // There are currently 1301 Pokémon in the Pokédex
+  return Math.floor(Math.random() * 1025) + 1; // There are currently 1025 Pokémon in the Pokédex
 }
 
 

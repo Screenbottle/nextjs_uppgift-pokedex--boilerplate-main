@@ -1,7 +1,8 @@
+"use client"
 import { Pokemon } from "@/lib/interfaces";
 import { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
-import { getRandomPokemon } from "@/lib/data/pokemon";
+import { fetchRandomPokemon } from "@/lib/data/pokemon";
 
 export default function FeaturedList() {
   const [featured, setFeatured] = useState<Pokemon[]>([]);
@@ -27,8 +28,8 @@ export default function FeaturedList() {
 
 async function getFeaturedPokemon(): Promise<Pokemon[]> {
   const featured: Pokemon[] = [];
-  for (let i = 0; i < 5; i++) {
-    const pokemon = await getRandomPokemon();
+  for (let i = 0; i < 4; i++) {
+    const pokemon = await fetchRandomPokemon();
     if (pokemon) {
       featured.push(pokemon);
     }

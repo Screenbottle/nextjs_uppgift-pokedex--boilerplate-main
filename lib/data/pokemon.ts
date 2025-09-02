@@ -2,10 +2,27 @@ import { Pokemon } from "../interfaces";
 import { randomPokemonId } from "../util";
 
 export async function fetchPokemonByName(name: string) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const data = await response.json();
 
-  return data;
+    const pokemon: Pokemon = {
+      id: data.id,
+      name: data.name,
+      image: data.sprites.front_default,
+      types: data.types.map((type: any) => type.type.name),
+      stats: {
+        hp: data.stats[0].base_stat,
+        attack: data.stats[1].base_stat,
+        defense: data.stats[2].base_stat,
+      },
+    };
+    
+    return pokemon;
+  } catch (error) {
+    console.error("Error fetching Pokémon by name:", error);
+    throw error;
+  }
 }
 
 export async function fetchPokemonById(id: number): Promise<Pokemon> {
@@ -24,7 +41,7 @@ export async function fetchPokemonById(id: number): Promise<Pokemon> {
         defense: data.stats[2].base_stat,
       },
     };
-    console.log(pokemon);
+    
     return pokemon;
   } catch (error) {
     console.error("Error fetching Pokémon by ID:", error);
@@ -32,7 +49,33 @@ export async function fetchPokemonById(id: number): Promise<Pokemon> {
   }
 }
 
-export async function getRandomPokemon(): Promise<Pokemon> {
+export async function fetchPokemonByUrl(url: string): Promise<Pokemon> {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const imageUrl = data.sprites.front_default ? data.sprites.front_default : data.sprites.other["official-artwork"].front_default;
+
+    const pokemon: Pokemon = {
+      id: data.id,
+      name: data.name,
+      image: imageUrl,
+      types: data.types.map((type: any) => type.type.name),
+      stats: {
+        hp: data.stats[0].base_stat,
+        attack: data.stats[1].base_stat,
+        defense: data.stats[2].base_stat,
+      },
+    };
+
+    return pokemon;
+  } catch (error) {
+    console.error("Error fetching Pokémon by URL:", error);
+    throw error;
+  }
+}
+
+export async function fetchRandomPokemon(): Promise<Pokemon> {
   let found = null;
   while (!found) {
     try {

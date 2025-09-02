@@ -1,0 +1,12 @@
+{
+    "pages": [
+        {
+            "href": "/",
+            "label": "Home"
+        },
+        {
+            "href": "/types",
+            "label": "Types"
+        }
+    ]
+}
