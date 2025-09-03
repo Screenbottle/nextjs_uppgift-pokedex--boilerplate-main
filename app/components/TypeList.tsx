@@ -6,8 +6,10 @@ import PokemonCard from "./PokemonCard";
 export default async function TypeList({ pokemonType }: { pokemonType: string }) {
     const pokemon = await fetchPokemonOfType(pokemonType)
 
+
+    
     return (
-        <div className="flex flex-wrap flex-row justify-center">
+        <div className="flex flex-wrap flex-row justify-center gap-1">
            {pokemon && pokemon.map(p => (
                <PokemonCard key={p.id} pokemon={p} />
            ))}

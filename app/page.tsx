@@ -1,10 +1,5 @@
-import Image from "next/image";
-import Loading from "./loading";
-import PokemonCard from "./components/PokemonCard";
 
-import { randomPokemonId } from "@/lib/util";
 import React from "react";
-import { Pokemon } from "@/lib/interfaces";
 import FeaturedList from "./components/FeaturedList";
 import RandomPokemon from "./components/RandomPokemon";
 

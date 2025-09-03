@@ -51,15 +51,16 @@ export async function fetchPokemonById(id: number): Promise<Pokemon> {
 
 export async function fetchPokemonByUrl(url: string): Promise<Pokemon> {
   try {
+    
     const response = await fetch(url);
+    
     const data = await response.json();
-
-    const imageUrl = data.sprites.front_default ? data.sprites.front_default : data.sprites.other["official-artwork"].front_default;
+    
 
     const pokemon: Pokemon = {
       id: data.id,
       name: data.name,
-      image: imageUrl,
+      image: data.sprites.front_default,
       types: data.types.map((type: any) => type.type.name),
       stats: {
         hp: data.stats[0].base_stat,
@@ -73,6 +74,12 @@ export async function fetchPokemonByUrl(url: string): Promise<Pokemon> {
     console.error("Error fetching Pokémon by URL:", error);
     throw error;
   }
+}
+
+export async function fetchGrass(url:string) {
+  const response = await fetch(url);
+  const text = await response.text();
+  console.log(text);
 }
 
 export async function fetchRandomPokemon(): Promise<Pokemon> {
