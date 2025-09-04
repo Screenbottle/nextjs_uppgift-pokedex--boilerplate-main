@@ -1,5 +1,4 @@
 import { fetchPokemonOfType } from "@/lib/data/types";
-import { PokemonType } from "@/lib/interfaces";
 import PokemonCard from "./PokemonCard";
 
 

@@ -1,4 +1,4 @@
-import { Pokemon, PokemonShort } from "../interfaces";
+import { Pokemon, PokemonShort, fullPokemonType } from "../interfaces";
 import { randomPokemonId } from "../util";
 
 export async function fetchAllPokemon(): Promise<PokemonShort[]> {
@@ -40,7 +40,7 @@ export async function fetchPokemonByName(name: string): Promise<Pokemon> {
       id: data.id,
       name: data.name,
       image: data.sprites.front_default,
-      types: data.types.map((type: any) => type.type.name),
+      types: data.types.map((type: fullPokemonType) => type.type.name),
       stats: {
         hp: data.stats[0].base_stat,
         attack: data.stats[1].base_stat,
@@ -64,7 +64,7 @@ export async function fetchPokemonById(id: number): Promise<Pokemon> {
       id: data.id,
       name: data.name,
       image: data.sprites.front_default,
-      types: data.types.map((type: any) => type.type.name),
+      types: data.types.map((type: fullPokemonType) => type.type.name),
       stats: {
         hp: data.stats[0].base_stat,
         attack: data.stats[1].base_stat,
@@ -91,7 +91,7 @@ export async function fetchPokemonByUrl(url: string): Promise<Pokemon> {
       id: data.id,
       name: data.name,
       image: data.sprites.front_default,
-      types: data.types.map((type: any) => type.type.name),
+      types: data.types.map((type: fullPokemonType) => type.type.name),
       stats: {
         hp: data.stats[0].base_stat,
         attack: data.stats[1].base_stat,
@@ -114,8 +114,8 @@ export async function fetchRandomPokemon(): Promise<Pokemon> {
       if (pokemon) {
         found = pokemon;
       }
-    } catch (e: any) {
-      
+    } catch (error) {
+      console.error("Error fetching random Pokémon:", error);
     }
   }
   return found;

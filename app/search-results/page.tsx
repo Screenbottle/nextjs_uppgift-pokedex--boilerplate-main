@@ -18,7 +18,7 @@ export default async function SearchResultsPage({ searchParams }: { searchParams
     return (
         <div>
             <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">
-                <h2 className="text-4xl text-center">Search Results for "{query}"</h2>
+                <h2 className="text-4xl text-center">Search Results for &quot;{query}&quot;</h2>
                 <SearchInput />
             </section>
             

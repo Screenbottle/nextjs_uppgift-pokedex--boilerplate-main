@@ -1,14 +1,12 @@
 "use client";
 
 import { SearchIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function SearchInput() {
     //here we use useState to control the passing of values from the input to the search when clicking a button
     const [query, setQuery] = useState("");
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
     const { replace } = useRouter();
 
     const handleSearchClick = () => {

@@ -18,7 +18,18 @@ export interface PokemonShort {
 export interface PokemonType {
   id: number;
   name: string;
-  pokemon: PokemonShort[];
+  pokemon: PokemonTypeListItem[];
 }
 
+export interface PokemonTypeListItem {
+  pokemon: PokemonShort;
+  slot: number;
+}
 
+export interface fullPokemonType {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  }
+}

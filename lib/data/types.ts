@@ -1,4 +1,4 @@
-import { Pokemon, PokemonType } from "../interfaces";
+import { Pokemon, PokemonType, PokemonTypeListItem } from "../interfaces";
 import { fetchPokemonByUrl } from "./pokemon";
 
 export async function fetchPokemonOfType(
@@ -7,12 +7,12 @@ export async function fetchPokemonOfType(
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
     if (!response.ok) throw new Error("Failed to fetch Pokémon by type");
-    const data = await response.json();
+    const data: PokemonType = await response.json();
 
     const typeData = {
       id: data.id,
       name: data.name,
-      pokemon: data.pokemon.map((p: any) => ({
+      pokemon: data.pokemon.map((p: PokemonTypeListItem) => ({
         name: p.pokemon.name,
         url: p.pokemon.url,
       })),
