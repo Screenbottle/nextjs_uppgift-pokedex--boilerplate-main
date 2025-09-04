@@ -2,6 +2,7 @@
 import React from "react";
 import FeaturedList from "./components/FeaturedList";
 import RandomPokemon from "./components/RandomPokemon";
+import SearchInput from "./components/SearchInput";
 
 export default function Home() {
   
@@ -15,10 +16,14 @@ export default function Home() {
         <RandomPokemon />
       </section>
 
-      <div className="flex flex-col mt-8 gap-4 bg-linear-to-r [background-image:linear-gradient(-50deg,_#C97FE4,_#AECDF6)] p-14">
+      <section className="mt-8 mb-8">
+        <SearchInput />
+      </section>
+
+      <section className="flex flex-col gap-4 bg-linear-to-r [background-image:linear-gradient(-50deg,_#C97FE4,_#AECDF6)] p-14">
         <h2 className="text-4xl text-center">Featured Pokémon</h2>
         {<FeaturedList />}
-      </div>
+      </section>
     </main>
   );
 }

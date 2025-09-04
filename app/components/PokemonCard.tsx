@@ -6,7 +6,7 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
 
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg rounded-xl border-5 border-blue-400 bg-sky-100">
+    <div className="max-w-sm max-h-min rounded overflow-hidden shadow-lg rounded-xl border-5 border-blue-400 bg-sky-100">
       <img className={`w-2xs rounded-full border-4 m-8 bg-white`} src={pokemon.image} alt={pokemon.name} style={{ borderColor: `var(${typeColour(pokemon.types[0])})` }} />
       <div className="px-6 py-4">
         <div className="flex flex-col justify-center text-center">

@@ -1,5 +1,5 @@
 import { Pokemon, PokemonType } from "../interfaces";
-import { fetchGrass, fetchPokemonByUrl } from "./pokemon";
+import { fetchPokemonByUrl } from "./pokemon";
 
 export async function fetchPokemonOfType(
   type: string

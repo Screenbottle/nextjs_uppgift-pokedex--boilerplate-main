@@ -1,7 +1,37 @@
-import { Pokemon } from "../interfaces";
+import { Pokemon, PokemonShort } from "../interfaces";
 import { randomPokemonId } from "../util";
 
-export async function fetchPokemonByName(name: string) {
+export async function fetchAllPokemon(): Promise<PokemonShort[]> {
+  try {
+    const respone = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1025");
+    const data = await respone.json();
+    return data.results;
+  }
+  catch (error) {
+    console.error("Error fetching all Pokémon:", error);
+    throw error;
+  }
+}
+
+export function matchPokemonName(pokemonList: PokemonShort[], query: string): PokemonShort[] {
+  // Replace "+" with "-", remove all other special characters, replace spaces with "-"
+  const normalizedQuery = query
+    .replace(/\+/g, "-")
+    .replace(/[^a-zA-Z0-9\- ]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
+
+  return pokemonList.filter(pokemon => {
+    const normalizedName = pokemon.name
+      .replace(/\+/g, "-")
+      .replace(/[^a-zA-Z0-9\- ]/g, "")
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+    return normalizedName.includes(normalizedQuery);
+  });
+}
+
+export async function fetchPokemonByName(name: string): Promise<Pokemon> {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     const data = await response.json();
@@ -74,12 +104,6 @@ export async function fetchPokemonByUrl(url: string): Promise<Pokemon> {
     console.error("Error fetching Pokémon by URL:", error);
     throw error;
   }
-}
-
-export async function fetchGrass(url:string) {
-  const response = await fetch(url);
-  const text = await response.text();
-  console.log(text);
 }
 
 export async function fetchRandomPokemon(): Promise<Pokemon> {
