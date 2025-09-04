@@ -7,7 +7,7 @@ export default async function NavMain() {
         <nav className="breakout flex items-center justify-between">
             <Link href={"/"}>
                 <span className="flex flex-row items-center gap-3">
-                    <Image src="/logo.png" alt="Logo" width={40} height={40} />
+                    <Image src="/Logo.png" alt="Logo" width={40} height={40} />
                     <h2 className="text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-800 to-blue-800 [background-clip:text]">Pokédex</h2>
                 </span>
             </Link>
