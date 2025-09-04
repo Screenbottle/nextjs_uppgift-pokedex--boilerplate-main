@@ -14,7 +14,7 @@ export async function fetchAllPokemon(): Promise<PokemonShort[]> {
 }
 
 export function matchPokemonName(pokemonList: PokemonShort[], query: string): PokemonShort[] {
-  // Replace "+" with "-", remove all other special characters, replace spaces with "-"
+  // Replace "+" with "-", remove all other special characters
   const normalizedQuery = query
     .replace(/\+/g, "-")
     .replace(/[^a-zA-Z0-9\- ]/g, "")
